@@ -3,7 +3,7 @@
 The scrum board that is easy and low commitment for medium to
 small projects or whatever else you want to use it for
 
-Check it our here [taskboards.herokuapp.com](https://taskboards.herokuapp.com)
+Check it our here [task-boards.herokuapp.com](https://taskboards.herokuapp.com)
 
 ## Setup for Development
 
