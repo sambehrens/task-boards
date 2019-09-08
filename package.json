@@ -1,0 +1,58 @@
+{
+    "name": "task-boards",
+    "version": "1.0.0",
+    "description": "Task boards",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sambehrens/task-boards"
+    },
+    "main": "server.js",
+    "scripts": {
+        "install-all": "npm install && npm install --prefix client",
+        "start:server": "node server.js",
+        "start:client": "npm run --prefix client start",
+        "test:client": "npm run --prefix client test",
+        "test:server": "mocha routes --recursive",
+        "test:api": "mocha test/api",
+        "test:selenium": "mocha test/selenium",
+        "server": "nodemon server.js",
+        "cover:client": "npm run test:client -- -- --coverage",
+        "cover:api": "nyc --reporter=lcov mocha test/api",
+        "cover:server": "nyc --reporter=lcov mocha routes --recursive",
+        "cover:server:no-clean": "nyc --no-clean --reporter=lcov mocha routes --recursive",
+        "coverage": "npm run cover:client && npm run cover:api && npm run cover:server:no-clean",
+        "combine-coverage-files": "lcov -a client/coverage/lcov.info -a coverage/lcov.info -o coverage/total.info",
+        "coveralls": "npm run combine-coverage-files && cat coverage/total.info | coveralls",
+        "start:dev": "concurrently \"npm run server\" \"npm run start:client\"",
+        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    },
+    "author": "Dog House Development",
+    "license": "MIT",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "concurrently": "^4.1.1",
+        "express": "^4.17.1",
+        "express-jwt": "^5.3.1",
+        "is-empty": "^1.2.0",
+        "mongoose": "^5.6.13",
+        "mongoose-hidden": "^1.6.1",
+        "validator": "^10.9.0"
+    },
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "chai-http": "^4.3.0",
+        "chromedriver": "^2.46.0",
+        "codacy-coverage": "^3.4.0",
+        "coveralls": "^3.0.5",
+        "mocha": "^6.0.0",
+        "mockgoose": "^8.0.2",
+        "mongo-unit": "^1.4.4",
+        "nodemon": "^1.19.2",
+        "nyc": "^14.1.1",
+        "selenium-webdriver": "^4.0.0-alpha.5"
+    },
+    "engines": {
+        "node": "11.10.1"
+    }
+}

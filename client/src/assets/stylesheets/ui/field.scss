@@ -1,0 +1,165 @@
+@import './_presets.scss';
+
+.field-label {
+  font-size: 0.8em;
+  font-weight: bold;
+  color: $gray-6;
+  display: inline-block;
+  margin: 0.4em 0;
+  text-transform: uppercase;
+}
+
+.field-wrapper {
+  position: relative;
+  margin-bottom: 1.5rem;
+
+  &.editable-field-wrapper {
+    margin-bottom: 1rem;
+  }
+
+  .field-error-label {
+    color: $red-2;
+    font-size: 0.7em;
+    position: absolute;
+    white-space: nowrap;
+    bottom: -1.5em;
+  }
+
+  .field-outer {
+    display: flex;
+    position: relative;
+
+    .field {
+      flex-grow: 1;
+      border: 1px solid $gray-2;
+      border-radius: $border-radius-default;
+      box-shadow: none;
+      -webkit-appearance: none;
+      background-color: transparent;
+      width: 100%;
+
+      &::placeholder {
+        color: $gray-4;
+      }
+
+      &:hover {
+        border-color: $gray-3;
+      }
+
+      &:focus {
+        outline: 0;
+        border-color: $blue-2;
+        background-color: $gray-0;
+      }
+
+      &.normal {
+        padding: 10px;
+        font-size: 1em;
+      }
+
+      &.large {
+        padding: 15px;
+        font-size: 1.25em;
+      }
+
+      &.secondary {
+        background-color: #e1e6ed;
+        border-color: transparent;
+        color: $gray-7;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+          background-color: $gray-1;
+          border-color: $gray-2;
+        }
+
+        &:focus {
+          background-color: $gray-1;
+          box-shadow: 0 0 0 3pt $blue-1;
+        }
+
+        &::placeholder {
+          color: $gray-5;
+        }
+      }
+
+      &.field-error-border {
+        border-color: $red-1;
+      }
+
+      &.clearable-field {
+        padding-right: 1.75em;
+      }
+
+      &.include-left-icon {
+        padding-left: 2em;
+      }
+    }
+
+    .clear-icon {
+      position: absolute;
+      pointer-events: auto;
+      color: $gray-4;
+      border-radius: 1em;
+      font-size: 1em;
+      right: 0.45em;
+      top: calc(50% - 0.5em);
+
+      &:hover {
+        color: $gray-5;
+        background-color: $gray-2;
+      }
+
+      &.large {
+        font-size: 1.3em;
+        right: 0.5em;
+      }
+
+      &.secondary {
+        &:hover {
+          color: $gray-7;
+          background-color: transparent;
+        }
+      }
+    }
+
+    .left-icon {
+      font-size: 1.4em;
+      top: calc(50% - 0.5em);
+      left: 0.3em;
+      position: absolute;
+      color: $gray-4;
+
+      &.large {
+        font-size: 1.3em;
+        left: 0.35em;
+        font-size: 1.75em;
+      }
+    }
+  }
+
+  &.inline-field {
+    @media screen and (min-width: $mobile) {
+      display: inline-block;
+      width: 50%;
+
+      .first-side-by-side-input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      .second-side-by-side-input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+
+  &.filter-field {
+    max-width: 14em;
+
+    @media screen and (max-width: $mobile) {
+      max-width: 100%;
+    }
+  }
+}

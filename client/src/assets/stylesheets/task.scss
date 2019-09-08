@@ -1,0 +1,9 @@
+@import 'presets.scss';
+
+.task {
+  border: 1px solid $transparent-3;
+  padding: 5px;
+  border-radius: $border-radius-default;
+  margin: 5px 0;
+  background-color: #fff;
+}

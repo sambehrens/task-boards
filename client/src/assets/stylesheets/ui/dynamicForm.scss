@@ -1,0 +1,79 @@
+.dynamic-form {
+  .inline-input-wrapper {
+    .inline-input-label {
+      color: $gray-7;
+      font-size: 1.1em;
+    }
+    .inline-input {
+      display: flex;
+      justify-content: space-between;
+
+      > .field-wrapper {
+        flex: 1;
+        margin-left: 0.7em;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        .field-outer {
+          input {
+            width: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .input-group {
+    overflow: visible;
+
+    .input-group-label {
+      display: inline-block;
+      color: $gray-7;
+      font-size: 1.6em;
+      border-bottom: 2px solid $gray-3;
+      padding-bottom: 0.3em;
+      margin-bottom: 0.6em;
+      margin-top: 1rem;
+
+      &.editable {
+        margin-top: 0;
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+
+    .input-group-buttons {
+      float: right;
+      position: relative;
+      // makes the buttons on top of the presented fields so you can
+      // click on them
+      z-index: 1;
+    }
+
+    &:first-child {
+      .input-group-label {
+        margin-top: 0.8em;
+      }
+    }
+
+    .input-group-description {
+      margin-bottom: 1em;
+    }
+
+    .input-group-loading {
+      float: left;
+    }
+
+    .edit {
+      display: inline-block;
+      margin-left: 0.7em;
+    }
+  }
+
+  .dynamic-form-end {
+    clear: both;
+  }
+}

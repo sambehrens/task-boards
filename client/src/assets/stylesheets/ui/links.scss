@@ -1,0 +1,56 @@
+@import './_presets.scss';
+
+.link {
+  display: inline;
+  font-weight: bold;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: none;
+  text-decoration: none;
+  -webkit-appearance: none;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.primary {
+    color: $blue-2;
+
+    &:hover {
+      color: $blue-3;
+    }
+
+    &:active {
+      color: $blue-4;
+    }
+  }
+
+  &.secondary {
+    color: $gray-7;
+
+    &:hover {
+      color: $gray-5;
+    }
+
+    &:active {
+      color: $gray-8;
+    }
+  }
+
+  &.tertiary {
+    color: $gray-3;
+
+    &:hover {
+      color: $gray-4;
+    }
+
+    &:active {
+      color: $gray-5;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3pt $blue-1;
+  }
+}
