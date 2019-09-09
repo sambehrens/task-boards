@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
     new mongoose.model(modelName)(req.body)
         .save()
         .then(doc => {
-            new mongoose.model('Column')({ name: 'To do', boardId: doc._id })
+            new mongoose.model('Column')({ name: 'To do', boardId: doc._id, startColumn: true })
                 .save()
                 .then(_toDo => {
                     new mongoose.model('Column')({ name: 'In progress', boardId: doc._id })

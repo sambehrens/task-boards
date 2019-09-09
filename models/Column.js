@@ -14,6 +14,10 @@ const columnSchema = new Schema(
         },
         taskIds: {
             type: [ObjectId]
+        },
+        startColumn: {
+            type: Boolean,
+            default: false
         }
     },
     { timestamps: true }

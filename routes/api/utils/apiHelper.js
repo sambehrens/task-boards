@@ -70,6 +70,7 @@ module.exports = {
                 }
                 delete req.body._id;
                 delete req.body.boardId;
+                delete req.body.startColumn;
                 for (let field in req.body) {
                     doc[field] = req.body[field];
                 }
