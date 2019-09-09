@@ -17,7 +17,7 @@ export class Column extends Component {
                 <h2>{this.props.column.name}</h2>
                 <Droppable droppableId={this.props.column._id}>
                     {provided => (
-                        <div ref={provided.innerRef} {...provided.droppableProps}>
+                        <div ref={provided.innerRef} {...provided.droppableProps} className="drop-area">
                             {_.map(this.props.tasks, (task, index) => {
                                 return <Task key={task._id} task={task} index={index} />;
                             })}

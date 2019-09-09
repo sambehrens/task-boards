@@ -1,7 +1,14 @@
 @import 'presets.scss';
 
 .column {
+  flex: 0 1 calc(33.33% - 1em);
   border: 1px solid $transparent-1;
   padding: 5px;
   border-radius: $border-radius-default;
+  // background-color: $blue-1;
+
+  .drop-area {
+    height: 100%;
+    // background-color: $red-1;
+  }
 }

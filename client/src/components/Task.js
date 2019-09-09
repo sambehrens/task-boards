@@ -17,6 +17,7 @@ export class Task extends Component {
                         ref={provided.innerRef}>
                         <h3>{this.props.task.name}</h3>
                         <p>{this.props.task.description}</p>
+                        <p>{this.props.task.estimate}</p>
                     </div>
                 )}
             </Draggable>

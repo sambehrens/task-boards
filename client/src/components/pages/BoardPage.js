@@ -9,15 +9,30 @@ import { withRouter } from 'react-router-dom';
 import BoardActions from '../../redux/actions/BoardActions';
 import TaskActions from '../../redux/actions/TaskActions';
 import ColumnActions from '../../redux/actions/ColumnActions';
+import NewTaskModal from '../NewTaskModal';
 
 export class BoardPage extends Component {
+    state = { showNewTaskModal: false };
+
     componentDidMount() {
         this.props.boardActions.get(this.props.match.params.id);
         this.props.columnActions.filter({ boardId: this.props.match.params.id });
         this.props.taskActions.filter({ boardId: this.props.match.params.id });
     }
 
-    onAddTaskClick = () => {};
+    onAddTaskClick = () => {
+        this.setState({ showNewTaskModal: true });
+    };
+
+    onAddTaskSubmit = values => {
+        this.setState({ showNewTaskModal: false });
+        this.props.taskActions.create(
+            _.assign({}, values, {
+                columnId: _.get(_.find(this.props.columns, 'startColumn'), '_id'),
+                boardId: this.props.match.params.id
+            })
+        );
+    };
 
     onDragEnd = result => {
         const { source, destination, draggableId } = result;
@@ -51,13 +66,34 @@ export class BoardPage extends Component {
     render() {
         return (
             <div className="board-page">
-                <h1>{_.get(this.props.board, 'name')}</h1>
+                <h1 className="board-name">{_.get(this.props.board, 'name')}</h1>
                 <Button onClick={this.onAddTaskClick}>Add a task</Button>
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    {_.map(this.props.columns, column => (
-                        <Column column={column} tasks={_.map(column.taskIds, id => this.props.tasks[id])} />
-                    ))}
+                    <div className="columns">
+                        {_.map(this.props.columns, column => (
+                            <Column
+                                key={column._id}
+                                column={column}
+                                tasks={_.reduce(
+                                    column.taskIds,
+                                    (result, id) => {
+                                        if (this.props.tasks[id]) {
+                                            result.push(this.props.tasks[id]);
+                                            return result;
+                                        }
+                                        return result;
+                                    },
+                                    []
+                                )}
+                            />
+                        ))}
+                    </div>
                 </DragDropContext>
+                {this.state.showNewTaskModal ? (
+                    <NewTaskModal
+                        onSubmit={this.onAddTaskSubmit}
+                        onCancel={() => this.setState({ showNewTaskModal: false })}></NewTaskModal>
+                ) : null}
             </div>
         );
     }

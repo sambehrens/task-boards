@@ -9,7 +9,7 @@ const initialState = {
 export default createReducer(initialState, {
     CREATE_TASK_SUCCESS(state, action) {
         return update(state, {
-            test: { $set: action.payload }
+            [action.payload.task._id]: { $set: action.payload.task }
         });
     },
 
