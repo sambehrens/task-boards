@@ -33,7 +33,13 @@ export default createReducer(initialState, {
 
     DELETE_TASK_SUCCESS(state, action) {
         return update(state, {
-            test: { $set: action.payload }
+            [action.payload.task._id]: {
+                $apply: tasks => {
+                    let copy = _.assign({}, tasks);
+                    delete copy.remove;
+                    return copy;
+                }
+            }
         });
     },
 

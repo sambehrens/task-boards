@@ -19,11 +19,13 @@ router.post('/', (req, res) => {
                     return res.status(404).json({ _id: `Column '${req.body.columnId}' does not exist` });
                 }
                 column.taskIds.push(doc._id);
-                column.save().catch(err => {
-                    return res.status(400).json(err);
-                });
+                column
+                    .save()
+                    .then(column => res.json({ task: doc, column }))
+                    .catch(err => {
+                        return res.status(400).json(err);
+                    });
             });
-            return res.json(doc);
         })
         .catch(err => {
             res.status(400).json(err);
@@ -40,7 +42,35 @@ ApiHelper.get(router, modelName);
 ApiHelper.edit(router, modelName);
 
 // @router DELETE api/tasks/:id
-ApiHelper.delete(router, modelName);
+router.delete('/:id', (req, res) => {
+    mongoose.model(modelName).findByIdAndDelete(req.params.id, (err, task) => {
+        if (err) {
+            return res.status(400).json(err);
+        }
+        if (!task) {
+            return res.status(404).json({ _id: `Document id '${req.params.id}' does not exist` });
+        }
+
+        mongoose.model('Column').findOne({ taskIds: task._id }, (err, column) => {
+            if (err) {
+                return res.status(400).json(err);
+            }
+            if (!column) {
+                return res.status(404).json({ _id: `Could not find column that task is in` });
+            }
+
+            column.taskIds = column.taskIds.filter(id => id === task._id);
+            column
+                .save()
+                .then(column => {
+                    return res.json({ column, task });
+                })
+                .catch(err => {
+                    return res.status(400).json(err);
+                });
+        });
+    });
+});
 
 // TODO: Consider how to get rid of task references in columns taskIds list
 

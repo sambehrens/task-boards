@@ -11,6 +11,12 @@ export default createReducer(initialState, {
         });
     },
 
+    DELETE_TASK_SUCCESS(state, action) {
+        return update(state, {
+            [action.payload.column._id]: { $set: action.payload.column }
+        });
+    },
+
     CHANGE_TASK_INDEX(state, action) {
         return update(state, {
             [action.payload.columnId]: { $merge: { taskIds: action.payload.taskIds } }
