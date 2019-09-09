@@ -2,11 +2,15 @@ import { createReducer } from '../utils/ReducerHelper';
 import update from 'immutability-helper';
 import _ from 'lodash';
 
-const initialState = {
-    errors: {}
-};
+const initialState = {};
 
 export default createReducer(initialState, {
+    CREATE_TASK_SUCCESS(state, action) {
+        return update(state, {
+            [action.payload.column._id]: { $set: action.payload.column }
+        });
+    },
+
     CHANGE_TASK_INDEX(state, action) {
         return update(state, {
             [action.payload.columnId]: { $merge: { taskIds: action.payload.taskIds } }

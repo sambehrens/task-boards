@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-    onCancel: PropTypes.func
+    onCancel: PropTypes.func.isRequired
 };
 
 const modalRoot = document.getElementById('modal-root');
