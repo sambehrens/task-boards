@@ -22,11 +22,15 @@ router.post('/move-tasks', (req, res) => {
         if (!sourceColumn) {
             return res.status(404).json({ _id: `Source column '${req.body.source.columnId}' does not exist` });
         }
+        let failed = false;
         req.body.taskIds.forEach(taskId => {
             if (!sourceColumn.taskIds.includes(taskId)) {
-                return res.status(400).json({ message: `Task is not in source column. Refresh and try again` });
+                failed = true;
             }
         });
+        if (failed) {
+            return res.status(400).json({ message: `Task is not in source column. Refresh and try again` });
+        }
 
         sourceColumn.taskIds = req.body.source.taskIds;
         sourceColumn

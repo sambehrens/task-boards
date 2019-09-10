@@ -12,7 +12,6 @@ export class Column extends Component {
         ) {
             return <div className="column">Loading</div>;
         }
-
         return (
             <div className="column">
                 <h2 className="column-title">{this.props.column.name}</h2>

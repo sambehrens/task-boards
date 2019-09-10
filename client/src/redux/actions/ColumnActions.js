@@ -49,7 +49,6 @@ export default {
                 type: 'MOVE_TASKS_FAIL',
                 payload: data
             });
-            getErrors(dispatch, Types.column, err);
             onFail(err);
         }
     }
