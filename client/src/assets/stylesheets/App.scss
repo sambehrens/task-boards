@@ -21,6 +21,7 @@
 @import 'ui/multiCheckbox.scss';
 @import 'ui/radio.scss';
 @import 'ui/modals.scss';
+@import 'ui/textArea.scss';
 
 // pages
 @import 'pages/landing.scss';
@@ -38,6 +39,8 @@
   padding-bottom: 51px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 i {

@@ -10,18 +10,23 @@ import BoardActions from '../../redux/actions/BoardActions';
 import TaskActions from '../../redux/actions/TaskActions';
 import ColumnActions from '../../redux/actions/ColumnActions';
 import NewTaskModal from '../NewTaskModal';
+import ViewTaskModal from '../ViewTaskModal';
+import Utils from '../../utils/Utils';
 
 export class BoardPage extends Component {
-    state = { showNewTaskModal: false };
+    state = { showNewTaskModal: false, showViewTaskModal: false };
 
     componentDidMount() {
+        if (Utils.getUrlParameter('task', this.props.location.search)) {
+            this.setState({ showViewTaskModal: true });
+        }
         this.props.boardActions.get(this.props.match.params.id);
         this.props.columnActions.filter({ boardId: this.props.match.params.id });
         this.props.taskActions.filter({ boardId: this.props.match.params.id });
     }
 
     onAddTaskClick = () => {
-        this.setState({ showNewTaskModal: true });
+        this.setState({ showNewTaskModal: true, showViewTaskModal: false });
     };
 
     onAddTaskSubmit = values => {
@@ -34,9 +39,26 @@ export class BoardPage extends Component {
         );
     };
 
+    onTaskClick = evt => {
+        evt.preventDefault();
+        if (evt.currentTarget.id) {
+            Utils.setUrlParameter('task', evt.currentTarget.id, this.props.history);
+            this.setState({ showViewTaskModal: true, showNewTaskModal: false });
+        }
+    };
+
+    onCloseTask = () => {
+        this.setState({ showViewTaskModal: false });
+        Utils.clearUrlParameters(this.props.history);
+    };
+
+    taskChangedPosition(source, destination) {
+        return source.droppableId !== destination.droppableId || source.index !== destination.index;
+    }
+
     onDragEnd = result => {
         const { source, destination, draggableId } = result;
-        if (!destination) {
+        if (!destination || !this.taskChangedPosition(source, destination)) {
             return;
         }
 
@@ -67,13 +89,16 @@ export class BoardPage extends Component {
         return (
             <div className="board-page">
                 <h1 className="board-name">{_.get(this.props.board, 'name')}</h1>
-                <Button onClick={this.onAddTaskClick}>Add a task</Button>
+                <div>
+                    <Button onClick={this.onAddTaskClick}>Add a task</Button>
+                </div>
                 <DragDropContext onDragEnd={this.onDragEnd}>
                     <div className="columns">
                         {_.map(this.props.columns, column => (
                             <Column
                                 key={column._id}
                                 column={column}
+                                onTaskClick={this.onTaskClick}
                                 tasks={_.reduce(
                                     column.taskIds,
                                     (result, id) => {
@@ -93,6 +118,13 @@ export class BoardPage extends Component {
                     <NewTaskModal
                         onSubmit={this.onAddTaskSubmit}
                         onCancel={() => this.setState({ showNewTaskModal: false })}></NewTaskModal>
+                ) : null}
+                {this.state.showViewTaskModal ? (
+                    <ViewTaskModal
+                        onCancel={this.onCloseTask}
+                        task={
+                            this.props.tasks[Utils.getUrlParameter('task', this.props.location.search)]
+                        }></ViewTaskModal>
                 ) : null}
             </div>
         );
