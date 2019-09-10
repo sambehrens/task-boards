@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import Task from './Task';
 import { Droppable } from 'react-beautiful-dnd';
+import classnames from 'classnames';
 
 export class Column extends Component {
     render() {
@@ -14,12 +15,17 @@ export class Column extends Component {
 
         return (
             <div className="column">
-                <h2>{this.props.column.name}</h2>
+                <h2 className="column-title">{this.props.column.name}</h2>
                 <Droppable droppableId={this.props.column._id}>
-                    {provided => (
-                        <div ref={provided.innerRef} {...provided.droppableProps} className="drop-area">
+                    {(provided, snapshot) => (
+                        <div
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}
+                            className={classnames('drop-area', { isDraggingOver: snapshot.isDraggingOver })}>
                             {_.map(this.props.tasks, (task, index) => {
-                                return <Task key={task._id} task={task} index={index} />;
+                                return (
+                                    <Task key={task._id} task={task} index={index} onClick={this.props.onTaskClick} />
+                                );
                             })}
                             {provided.placeholder}
                         </div>

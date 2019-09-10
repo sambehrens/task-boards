@@ -1,9 +1,13 @@
 @import 'presets.scss';
 
 .task {
-  border: 2px solid $orange-1;
-  padding: 5px;
+  padding: 10px;
   border-radius: $border-radius-default;
-  margin: 5px 0;
+  margin: 0 0 10px 0;
   background-color: #fff;
+  box-shadow: 0 0.5px 0 0 #fff inset, 0 1px 2px 0 $transparent-4;
+
+  &.isDragging {
+    background-color: $gray-0;
+  }
 }

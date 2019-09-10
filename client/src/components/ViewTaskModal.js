@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import Button from './ui/Button';
 import Modal from './ui/modal/Modal';
 import ReactMarkdown from 'react-markdown';
+import _ from 'lodash';
 
 export class ViewTaskModal extends Component {
     render() {
+        if (!this.props.task || _.isEmpty(this.props.task)) {
+            return (
+                <Modal onCancel={this.props.onCancel}>
+                    <div className="view-task-modal">Loading task</div>
+                </Modal>
+            );
+        }
         return (
             <Modal onCancel={this.props.onCancel}>
                 <div className="view-task-modal">

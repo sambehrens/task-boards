@@ -29,6 +29,10 @@ const Utils = {
         history.push({ search: `?${key}=${value}` });
     },
 
+    clearUrlParameters: history => {
+        history.push({ search: null });
+    },
+
     getUrlParameter: (key, search) => {
         key = key.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
         let results = new RegExp('[\\?&]' + key + '=([^&#]*)').exec(search);

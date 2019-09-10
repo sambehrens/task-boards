@@ -1,0 +1,23 @@
+.text-area {
+  flex: 1;
+  border: 1px solid $gray-2;
+  border-radius: $border-radius-default;
+  box-shadow: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  width: 100%;
+  font-size: 1em;
+  resize: none;
+  height: 5em;
+  padding: 10px;
+
+  &:hover {
+    border-color: $gray-3;
+  }
+
+  &:focus {
+    outline: 0;
+    border-color: $blue-2;
+    background-color: $gray-0;
+  }
+}
