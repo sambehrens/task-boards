@@ -24,10 +24,11 @@ export default {
         }
     },
 
-    changeTaskColumn: (source, destination, onSuccess = _.noop, onFail = _.noop) => async dispatch => {
+    changeTaskColumn: (taskId, source, destination, onSuccess = _.noop, onFail = _.noop) => async dispatch => {
         const data = {
             source,
-            destination
+            destination,
+            taskIds: [taskId]
         };
         dispatch({
             type: 'CHANGE_TASK_COLUMN',

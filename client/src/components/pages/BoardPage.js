@@ -71,6 +71,7 @@ export class BoardPage extends Component {
             const destinationTaskIds = _.clone(this.props.columns[destination.droppableId].taskIds);
             destinationTaskIds.splice(destination.index, 0, draggableId);
             this.props.columnActions.changeTaskColumn(
+                draggableId,
                 {
                     columnId: source.droppableId,
                     taskIds: sourceTaskIds,
