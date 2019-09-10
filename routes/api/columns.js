@@ -29,7 +29,7 @@ router.post('/move-tasks', (req, res) => {
             }
         });
         if (failed) {
-            return res.status(400).json({ message: `Task is not in source column. Refresh and try again` });
+            return res.status(400).json({ message: `Task is not in source column. Refresh and try again.` });
         }
 
         sourceColumn.taskIds = req.body.source.taskIds;

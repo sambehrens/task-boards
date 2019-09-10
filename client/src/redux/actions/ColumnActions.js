@@ -49,7 +49,7 @@ export default {
                 type: 'MOVE_TASKS_FAIL',
                 payload: data
             });
-            onFail(err);
+            onFail(err.response);
         }
     }
 };

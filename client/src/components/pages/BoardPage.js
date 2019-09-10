@@ -12,9 +12,10 @@ import ColumnActions from '../../redux/actions/ColumnActions';
 import NewTaskModal from '../NewTaskModal';
 import ViewTaskModal from '../ViewTaskModal';
 import Utils from '../../utils/Utils';
+import PageMessage from '../ui/PageMessage';
 
 export class BoardPage extends Component {
-    state = { showNewTaskModal: false, showViewTaskModal: false };
+    state = { showNewTaskModal: false, showViewTaskModal: false, showErrorPageMessage: false, errorMessage: '' };
 
     componentDidMount() {
         if (Utils.getUrlParameter('task', this.props.location.search)) {
@@ -23,6 +24,12 @@ export class BoardPage extends Component {
         this.props.boardActions.get(this.props.match.params.id);
         this.props.columnActions.filter({ boardId: this.props.match.params.id });
         this.props.taskActions.filter({ boardId: this.props.match.params.id });
+    }
+
+    componentWillUnmount() {
+        if (this.pageMessageTimeout) {
+            clearTimeout(this.pageMessageTimeout);
+        }
     }
 
     onAddTaskClick = () => {
@@ -56,6 +63,14 @@ export class BoardPage extends Component {
         return source.droppableId !== destination.droppableId || source.index !== destination.index;
     }
 
+    onChangeColumnFail = response => {
+        this.setState({ showErrorPageMessage: true, errorMessage: response.data.message });
+        if (this.pageMessageTimeout) {
+            clearTimeout(this.pageMessageTimeout);
+        }
+        this.pageMessageTimeout = setTimeout(() => this.setState({ showErrorPageMessage: false }), 10000);
+    };
+
     onDragEnd = result => {
         const { source, destination, draggableId } = result;
         if (!destination || !this.taskChangedPosition(source, destination)) {
@@ -81,7 +96,9 @@ export class BoardPage extends Component {
                     columnId: destination.droppableId,
                     taskIds: destinationTaskIds,
                     originalTaskIds: this.props.columns[destination.droppableId].taskIds
-                }
+                },
+                _.noop,
+                this.onChangeColumnFail
             );
         }
     };
@@ -127,6 +144,7 @@ export class BoardPage extends Component {
                             this.props.tasks[Utils.getUrlParameter('task', this.props.location.search)]
                         }></ViewTaskModal>
                 ) : null}
+                {this.state.showErrorPageMessage ? <PageMessage>{this.state.errorMessage}</PageMessage> : null}
             </div>
         );
     }
