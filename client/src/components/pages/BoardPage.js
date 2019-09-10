@@ -15,7 +15,13 @@ import Utils from '../../utils/Utils';
 import PageMessage from '../ui/PageMessage';
 
 export class BoardPage extends Component {
-    state = { showNewTaskModal: false, showViewTaskModal: false, showErrorPageMessage: false, errorMessage: '' };
+    state = {
+        showNewTaskModal: false,
+        showViewTaskModal: false,
+        showErrorPageMessage: false,
+        errorMessage: '',
+        newTask: { name: '', description: '', estimate: '' }
+    };
 
     componentDidMount() {
         if (Utils.getUrlParameter('task', this.props.location.search)) {
@@ -36,10 +42,17 @@ export class BoardPage extends Component {
         this.setState({ showNewTaskModal: true, showViewTaskModal: false });
     };
 
-    onAddTaskSubmit = values => {
-        this.setState({ showNewTaskModal: false });
+    onAddTaskChange = evt => {
+        this.setState(state => ({
+            newTask: _.assign({}, state.newTask, { [evt.target.id]: evt.target.value })
+        }));
+    };
+
+    onAddTaskSubmit = evt => {
+        evt.preventDefault();
+        this.setState({ showNewTaskModal: false, newTask: { name: '', description: '', estimate: '' } });
         this.props.taskActions.create(
-            _.assign({}, values, {
+            _.assign({}, this.state.newTask, {
                 columnId: _.get(_.find(this.props.columns, 'startColumn'), '_id'),
                 boardId: this.props.match.params.id
             })
@@ -135,7 +148,9 @@ export class BoardPage extends Component {
                 {this.state.showNewTaskModal ? (
                     <NewTaskModal
                         onSubmit={this.onAddTaskSubmit}
-                        onCancel={() => this.setState({ showNewTaskModal: false })}></NewTaskModal>
+                        onCancel={() => this.setState({ showNewTaskModal: false })}
+                        onChange={this.onAddTaskChange}
+                        {...this.state.newTask}></NewTaskModal>
                 ) : null}
                 {this.state.showViewTaskModal ? (
                     <ViewTaskModal

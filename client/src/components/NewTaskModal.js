@@ -5,15 +5,9 @@ import Field from './ui/Field';
 import TextArea from './ui/TextArea';
 
 export class NewTaskModal extends Component {
-    state = { name: '', description: '', estimate: '' };
-
-    onFieldChange = evt => {
-        this.setState({ [evt.target.id]: evt.target.value });
-    };
-
-    onSubmit = evt => {
-        evt.preventDefault();
-        this.props.onSubmit(this.state);
+    onChange = evt => {
+        evt.persist();
+        this.props.onChange(evt);
     };
 
     render() {
@@ -21,26 +15,27 @@ export class NewTaskModal extends Component {
             <Modal onCancel={this.props.onCancel}>
                 <div className="new-task-modal">
                     <h2>Create a new task</h2>
-                    <form onSubmit={this.onSubmit}>
+                    <form onSubmit={this.props.onSubmit}>
                         <Field
                             id="name"
-                            value={this.state.name}
+                            value={this.props.name}
                             label="Name"
-                            onChange={this.onFieldChange}
+                            onChange={this.onChange}
                             placeholder="Name"
                         />
                         <TextArea
                             id="description"
-                            value={this.state.description}
-                            onChange={this.onFieldChange}
+                            value={this.props.description}
+                            onChange={this.onChange}
                             label="Description"
                             placeholder="Description"></TextArea>
                         <Field
                             id="estimate"
-                            value={this.state.estimate}
+                            value={this.props.estimate}
                             label="Estimate"
-                            onChange={this.onFieldChange}
+                            onChange={this.onChange}
                             placeholder="Estimate"
+                            type="number"
                         />
                         <Button type="submit">Create</Button>
                     </form>
