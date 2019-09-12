@@ -5,13 +5,28 @@
   flex-direction: column;
 
   .board-name {
-    // color: #
+    color: #fff;
+    margin: 1em 1em 0 0;
   }
-  .columns {
+
+  .controls-row {
+    padding: 1.5em;
+  }
+
+  .columns-wrapper {
     flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    height: 100%;
+    padding-bottom: 2em;
+
+    .columns {
+      margin: auto;
+      min-height: 40em;
+      max-width: 800px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      background-color: $gray-7;
+      border-radius: $border-radius-default;
+      padding: 0 $columns-padding $columns-padding;
+    }
   }
 }

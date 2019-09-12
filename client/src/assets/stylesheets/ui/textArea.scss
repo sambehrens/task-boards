@@ -11,6 +11,10 @@
   height: 5em;
   padding: 10px;
 
+  &::placeholder {
+    color: $gray-4;
+  }
+
   &:hover {
     border-color: $gray-3;
   }

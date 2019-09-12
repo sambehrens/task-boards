@@ -1,5 +1,12 @@
 @import '_presets.scss';
 
+.footer-line {
+  border-top: 1px solid $gray-7;
+  margin: auto;
+  width: 65%;
+  max-width: 700px;
+}
+
 .footer {
   position: absolute;
   width: 100%;

@@ -14,7 +14,7 @@ export class Column extends Component {
         }
         return (
             <div className="column">
-                <h2 className="column-title">{this.props.column.name}</h2>
+                <h3 className="column-title">{_.startCase(this.props.column.name)}</h3>
                 <Droppable droppableId={this.props.column._id}>
                     {(provided, snapshot) => (
                         <div

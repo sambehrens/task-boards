@@ -120,31 +120,33 @@ export class BoardPage extends Component {
         return (
             <div className="board-page">
                 <h1 className="board-name">{_.get(this.props.board, 'name')}</h1>
-                <div>
+                <div className="controls-row">
                     <Button onClick={this.onAddTaskClick}>Add a task</Button>
                 </div>
-                <DragDropContext onDragEnd={this.onDragEnd}>
-                    <div className="columns">
-                        {_.map(this.props.columns, column => (
-                            <Column
-                                key={column._id}
-                                column={column}
-                                onTaskClick={this.onTaskClick}
-                                tasks={_.reduce(
-                                    column.taskIds,
-                                    (result, id) => {
-                                        if (this.props.tasks[id]) {
-                                            result.push(this.props.tasks[id]);
+                <div className="columns-wrapper">
+                    <DragDropContext onDragEnd={this.onDragEnd}>
+                        <div className="columns">
+                            {_.map(this.props.columns, column => (
+                                <Column
+                                    key={column._id}
+                                    column={column}
+                                    onTaskClick={this.onTaskClick}
+                                    tasks={_.reduce(
+                                        column.taskIds,
+                                        (result, id) => {
+                                            if (this.props.tasks[id]) {
+                                                result.push(this.props.tasks[id]);
+                                                return result;
+                                            }
                                             return result;
-                                        }
-                                        return result;
-                                    },
-                                    []
-                                )}
-                            />
-                        ))}
-                    </div>
-                </DragDropContext>
+                                        },
+                                        []
+                                    )}
+                                />
+                            ))}
+                        </div>
+                    </DragDropContext>
+                </div>
                 {this.state.showNewTaskModal ? (
                     <NewTaskModal
                         onSubmit={this.onAddTaskSubmit}

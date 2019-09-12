@@ -1,20 +1,26 @@
 @import 'presets.scss';
 
 .column {
-  flex: 0 1 calc(33.33% - 0.7em);
+  flex: 0 1 calc(33.33% - 0.35em);
   border-radius: $border-radius-default;
+  display: flex;
+  flex-direction: column;
 
   .column-title {
     padding: 10px;
+    color: #fff;
   }
 
   .drop-area {
-    height: 100%;
+    flex: 1;
     border-radius: $border-radius-default;
     padding: 10px;
+    background-color: $gray-background;
+    border: 1px solid $gray-background;
 
     &.isDraggingOver {
-      background-color: $transparent-1;
+      // background-color: $transparent-1;
+      border-color: $blue-4;
     }
   }
 }

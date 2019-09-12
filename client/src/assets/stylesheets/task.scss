@@ -4,10 +4,11 @@
   padding: 10px;
   border-radius: $border-radius-default;
   margin: 0 0 10px 0;
-  background-color: #fff;
-  box-shadow: 0 0.5px 0 0 #fff inset, 0 1px 2px 0 $transparent-4;
+  background-color: $gray-6;
+  box-shadow: 0 1px 2px 0 $transparent-4;
+  color: #fff;
 
   &.isDragging {
-    background-color: $gray-0;
+    background-color: $gray-5;
   }
 }
