@@ -33,6 +33,13 @@ export class BoardPage extends Component {
         this.props.taskActions.filter({ boardId: boardId });
     }
 
+    componentDidUpdate() {
+        const urlTask = Utils.getUrlParameter('task', this.props.location.search);
+        if (this.state.showViewTaskModal !== !!urlTask) {
+            this.setState({ showViewTaskModal: !!urlTask });
+        }
+    }
+
     componentWillUnmount() {
         if (this.pageMessageTimeout) {
             clearTimeout(this.pageMessageTimeout);
