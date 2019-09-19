@@ -15,7 +15,7 @@
   .dropdown-content {
     position: absolute;
     padding: 5px 0;
-    border: 1px solid $gray-2;
+    border: 1px solid $light-grey;
     border-radius: $border-radius-default;
     background-color: #fff;
     min-width: 12em;
@@ -40,7 +40,7 @@
 
         &.arrow-behind {
           top: -9px;
-          border-bottom-color: $gray-2;
+          border-bottom-color: $dark-grey;
         }
       }
     }
@@ -70,7 +70,7 @@
     }
 
     hr {
-      border-color: $gray-3;
+      border-color: $dark-grey;
       margin: 5px 0;
       border-top: 0;
       border-style: solid;
@@ -92,17 +92,17 @@
 
       &:active {
         color: #000;
-        background-color: $gray-3;
+        background-color: $blue;
       }
 
       &:focus {
         outline: none;
         color: #000;
-        background-color: $gray-1;
+        background-color: $light-grey;
       }
 
       &:hover {
-        background-color: $blue-3;
+        background-color: $hover-blue;
         color: #fff;
       }
 

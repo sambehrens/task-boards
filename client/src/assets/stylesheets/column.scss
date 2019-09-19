@@ -1,20 +1,34 @@
 @import 'presets.scss';
 
 .column {
-  flex: 0 1 calc(33.33% - 0.7em);
-  border-radius: $border-radius-default;
+  flex: 0 1 calc(33.33% - 0.13em);
+  // border-radius: $border-radius-default;
+  display: flex;
+  flex-direction: column;
+
+  &:first-child .drop-area {
+    border-bottom-left-radius: $border-radius-default;
+    border-top-left-radius: $border-radius-default;
+  }
+
+  &:last-child .drop-area {
+    border-bottom-right-radius: $border-radius-default;
+    border-top-right-radius: $border-radius-default;
+  }
 
   .column-title {
     padding: 10px;
   }
 
   .drop-area {
-    height: 100%;
-    border-radius: $border-radius-default;
+    flex: 1;
+    // border-radius: $border-radius-default;
     padding: 10px;
+    // background-color: $deep-black;
+    border: 1px solid transparent;
 
     &.isDraggingOver {
-      background-color: $transparent-1;
+      border-color: $fill-blue;
     }
   }
 }

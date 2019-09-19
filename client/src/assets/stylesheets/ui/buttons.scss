@@ -3,7 +3,7 @@
 .button {
   display: inline-block;
   position: relative;
-  font-weight: bold;
+  font-weight: 900;
   border: 1px solid transparent;
   border-radius: 5px;
   box-shadow: none;
@@ -15,7 +15,7 @@
 
   &.medium {
     padding: 0.6em 1.5em;
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
 
   &.large {
@@ -24,56 +24,59 @@
   }
 
   &.primary {
-    background-color: $blue-2;
-    border-color: $blue-2;
+    background-color: $link-blue;
+    border-color: $link-blue;
     color: #fff;
 
     &:hover {
-      background-color: $blue-3;
-      border-color: $blue-3;
+      background-color: $hover-blue;
+      border-color: $hover-blue;
     }
 
-    &:active {
-      background-color: $blue-4;
-      border-color: $blue-4;
+    &:focus {
+      background-color: $hover-blue;
     }
   }
 
   &.secondary {
-    border-color: $transparent-1;
-    color: black;
-    background-color: $transparent-1;
+    border-color: transparent;
+    color: $dark-grey;
+    background-color: #fff;
 
     &:hover {
-      background-color: $transparent-2;
+      background-color: $soft-grey;
     }
 
-    &:active {
-      background-color: $transparent-3;
+    &:focus {
+      background-color: $soft-grey;
     }
   }
 
   &:disabled {
     border-color: transparent;
-    background-color: $transparent-1;
-    color: $transparent-2;
+    background-color: $black;
+    color: $dark-grey;
 
     &:hover,
     &:active {
       border-color: transparent;
-      background-color: $transparent-1;
-      color: $transparent-2;
+      background-color: $dark-grey;
+      color: $light-grey;
     }
   }
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 0 3pt $blue-1;
+    box-shadow: 0 0 0 3pt $pale-blue;
   }
 
   &.form-button {
     float: right;
-    margin-top: 1.5em;
+    margin-right: 0.5em;
+  }
+
+  &.form-button-right {
+    margin-right: 0;
   }
 
   &.icon {
@@ -96,22 +99,5 @@
     margin-top: -2px;
     margin-bottom: none;
     left: 0.65em;
-  }
-
-  &.delete-button {
-    text-align: right;
-    background-color: $orange-1;
-    border-color: $orange-2;
-    transition: box-shadow ease-in-out 0.12s;
-
-    &:hover {
-      background-color: $orange-2;
-      border-color: $orange-2;
-    }
-
-    &:active {
-      background-color: $orange-1;
-      border-color: $orange-2;
-    }
   }
 }

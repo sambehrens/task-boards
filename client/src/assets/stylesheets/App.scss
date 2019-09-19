@@ -12,11 +12,9 @@
 @import 'ui/searchField.scss';
 @import 'ui/panel.scss';
 @import 'ui/list.scss';
-@import 'ui/loading.scss';
 @import 'ui/select.scss';
 @import 'ui/picker.scss';
 @import 'ui/combobox.scss';
-@import 'ui/dynamicForm.scss';
 @import 'ui/checkbox.scss';
 @import 'ui/multiCheckbox.scss';
 @import 'ui/radio.scss';
@@ -37,11 +35,6 @@
 .wrapper {
   width: 100%;
   min-height: 100%;
-  padding-bottom: 51px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
 i {
@@ -49,7 +42,7 @@ i {
 }
 
 hr {
-  border: 1px solid $gray-2;
+  border: 1px solid $light-grey;
   margin: 1em 0;
 }
 
@@ -63,4 +56,28 @@ hr {
 
 .clear {
   clear: both;
+}
+
+h1 {
+  font-size: 1.75em;
+}
+
+h2 {
+  font-size: 1.35em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+h4 {
+  font-size: 0.9em;
+}
+
+h5 {
+  font-size: 0.5em;
+}
+
+p {
+  font-size: 0.9em;
 }

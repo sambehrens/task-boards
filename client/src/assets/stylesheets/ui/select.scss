@@ -17,12 +17,12 @@
         position: absolute;
         right: 0.1em;
         top: 20%;
-        color: $gray-4;
+        color: $light-grey;
       }
 
       &:hover {
         .select-icon {
-          color: $gray-6;
+          color: $dark-grey;
         }
       }
     }

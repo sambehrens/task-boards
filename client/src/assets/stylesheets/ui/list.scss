@@ -2,15 +2,15 @@
 
 .list {
   padding: 0;
-  border: 1px solid $gray-3;
+  border: 1px solid $light-grey;
   border-collapse: collapse;
 
   .list-header {
-    color: $gray-6;
-    border-bottom: 1px solid $gray-3;
+    color: $dark-grey;
+    border-bottom: 1px solid $light-grey;
     text-transform: uppercase;
     font-size: 0.8em;
-    background-color: $gray-1;
+    background-color: $soft-grey;
     font-weight: bold;
     padding: 0.7em 1.5em 0.7em 1.5em;
     text-align: left;
@@ -29,9 +29,9 @@
       overflow-wrap: break-word;
 
       &:hover {
-        border-top: 1px solid $blue-2;
-        border-bottom: 1px solid $blue-2;
-        background-color: $blue-1;
+        border-top: 1px solid $pale-blue;
+        border-bottom: 1px solid $pale-blue;
+        background-color: $fill-blue;
 
         &:first-child {
           border-top-color: transparent;
@@ -78,7 +78,7 @@
     .no-data-message {
       text-align: center;
       padding: 0.5em;
-      color: $gray-5;
+      color: $light-grey;
     }
   }
 }

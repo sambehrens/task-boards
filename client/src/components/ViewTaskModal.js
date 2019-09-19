@@ -1,10 +1,46 @@
 import React, { Component } from 'react';
-import Button from './ui/Button';
 import Modal from './ui/modal/Modal';
-import ReactMarkdown from 'react-markdown';
 import _ from 'lodash';
+import TaskModal from './TaskModal';
 
 export class ViewTaskModal extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            present: true,
+            editedFields: {}
+        };
+    }
+
+    onEditClick = evt => {
+        evt.preventDefault();
+        this.setState({ present: false });
+    };
+
+    onEditSubmit = evt => {
+        evt.preventDefault();
+        this.setState({ present: true, editedFields: {} });
+        if (
+            _.isEmpty(this.state.editedFields) ||
+            _.isEqual(_.assign({}, this.props.task, this.state.editedFields), this.props.task)
+        ) {
+            return;
+        }
+        this.props.onEditSubmit(this.props.task._id, this.state.editedFields);
+    };
+
+    onCancel = () => {
+        this.setState({ present: true, editedFields: {} });
+        this.props.onCancel();
+    };
+
+    onChange = evt => {
+        this.setState(state => ({
+            editedFields: _.assign({}, state.editedFields, { [evt.target.id]: evt.target.value })
+        }));
+    };
+
     render() {
         if (!this.props.task || _.isEmpty(this.props.task)) {
             return (
@@ -13,15 +49,19 @@ export class ViewTaskModal extends Component {
                 </Modal>
             );
         }
+
         return (
-            <Modal onCancel={this.props.onCancel}>
-                <div className="view-task-modal">
-                    <h2>{this.props.task.name}</h2>
-                    <p>{this.props.task.estimate}</p>
-                    <ReactMarkdown>{this.props.task.description}</ReactMarkdown>
-                    <Button onClick={this.props.onCancel}>Close</Button>
-                </div>
-            </Modal>
+            <TaskModal
+                onCancel={this.onCancel}
+                onChange={this.onChange}
+                onSubmit={this.onEditSubmit}
+                onCancelEdit={this.onCancelEdit}
+                onEditClick={this.onEditClick}
+                task={this.props.task}
+                editedFields={this.state.editedFields}
+                present={this.state.present}
+                title={_.get(this.props.task, 'name')}
+            />
         );
     }
 }

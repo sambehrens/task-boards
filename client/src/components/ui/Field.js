@@ -74,7 +74,7 @@ class Field extends Component {
             return (
                 <div style={style} className="field-wrapper editable-field-wrapper">
                     <p className="field-label">{this.props.label}</p>
-                    <p>{this.props.value}</p>
+                    <p className="field-present-value">{this.props.value}</p>
                 </div>
             );
         }
