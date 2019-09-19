@@ -1,7 +1,7 @@
 @import '_presets.scss';
 
 .footer-line {
-  border-top: 1px solid $gray-7;
+  border-top: 1px solid $dark-grey;
   margin: auto;
   width: 65%;
   max-width: 700px;
@@ -12,7 +12,7 @@
   width: 100%;
   bottom: 0;
   text-align: center;
-  color: $gray-2;
+  color: $dark-grey;
   padding: 1em 0;
 
   li {

@@ -3,10 +3,14 @@
 .field-label {
   font-size: 0.8em;
   font-weight: bold;
-  color: $gray-6;
+  color: $dark-grey;
   display: inline-block;
   margin: 0.4em 0;
   // text-transform: uppercase;
+}
+
+.field-present-value {
+  font-size: 1em;
 }
 
 .field-wrapper {
@@ -18,7 +22,7 @@
   }
 
   .field-error-label {
-    color: $red-2;
+    color: $warning-red;
     font-size: 0.7em;
     position: absolute;
     white-space: nowrap;
@@ -31,25 +35,24 @@
 
     .field {
       flex-grow: 1;
-      border: 1px solid $gray-2;
-      border-radius: $border-radius-default;
+      border: 1px solid $field-border-color;
+      border-radius: $field-border-radius;
       box-shadow: none;
       -webkit-appearance: none;
       background-color: transparent;
       width: 100%;
 
       &::placeholder {
-        color: $gray-4;
+        color: $light-grey;
       }
 
       &:hover {
-        border-color: $gray-3;
+        border-color: $field-hover-border-color;
       }
 
       &:focus {
         outline: 0;
-        border-color: $blue-2;
-        background-color: $gray-0;
+        border-color: $field-active-border-color;
       }
 
       &.normal {
@@ -62,29 +65,8 @@
         font-size: 1.25em;
       }
 
-      &.secondary {
-        background-color: #e1e6ed;
-        border-color: transparent;
-        color: $gray-7;
-        transition: all 0.15s ease-in-out;
-
-        &:hover {
-          background-color: $gray-1;
-          border-color: $gray-2;
-        }
-
-        &:focus {
-          background-color: $gray-1;
-          box-shadow: 0 0 0 3pt $blue-1;
-        }
-
-        &::placeholder {
-          color: $gray-5;
-        }
-      }
-
       &.field-error-border {
-        border-color: $red-1;
+        border-color: $warning-red;
       }
 
       &.clearable-field {
@@ -99,27 +81,20 @@
     .clear-icon {
       position: absolute;
       pointer-events: auto;
-      color: $gray-4;
+      color: $light-grey;
       border-radius: 1em;
       font-size: 1em;
       right: 0.45em;
       top: calc(50% - 0.5em);
 
       &:hover {
-        color: $gray-5;
-        background-color: $gray-2;
+        color: $off-white;
+        background-color: $dark-grey;
       }
 
       &.large {
         font-size: 1.3em;
         right: 0.5em;
-      }
-
-      &.secondary {
-        &:hover {
-          color: $gray-7;
-          background-color: transparent;
-        }
       }
     }
 
@@ -128,7 +103,7 @@
       top: calc(50% - 0.5em);
       left: 0.3em;
       position: absolute;
-      color: $gray-4;
+      color: $light-grey;
 
       &.large {
         font-size: 1.3em;

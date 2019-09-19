@@ -1,41 +1,38 @@
-$blue-1: #a5c7ff;
-$blue-2: #1e90ff;
-$blue-3: #027ffc; // button hover style
-$blue-4: #0074e9; // button active style
-
-// transparents from more to less
-$transparent-1: #00000009;
-$transparent-2: #00000016;
-$transparent-3: #00000033;
-$transparent-4: #00000066;
-
 // border
 $border-radius-default: 6px;
-
-// grays from light to dark
-$gray-0: #f9fbff;
-$gray-1: #f2f4f7;
-$gray-2: #e1e6ed;
-$gray-3: #cbcfd6;
-$gray-4: #a5a9af;
-$gray-5: #83878c;
-$gray-6: #616468;
-$gray-7: #333538;
-$gray-8: #1d1e21;
-
-$gray-background: #1b1b1d;
-
-$green-1: #3bff2a;
-$green-2: #1be836;
-$green-3: #0cb723;
-
-$red-1: #ff796d;
-$red-2: #e8330c;
-
-$orange-1: #ff810d;
-$orange-2: #ff5a19;
 
 // mobile styling width
 $mobile: 40em;
 
 $columns-padding: 0.5em;
+
+// Greys and Blacks
+$deep-black: #1b1b1d;
+$black: #2c2d30;
+$dark-grey: #717274;
+$light-grey: #a0a0a2;
+$soft-grey: #e8e8e8;
+$off-white: #f9f9f9;
+
+// Blues
+$blue: #1543d9;
+$hover-blue: #005e99;
+$link-blue: #0576b9;
+$fill-blue: #2d9ee0;
+$pale-blue: #eaf5fc;
+
+// Reds, Yellows and Oranges
+$warning-red: #d72b3f;
+$orange: #f26130;
+$mustard: #ff9000;
+$yellow: #ffcc00;
+$highlight-yellow: #fff5cc;
+
+// Green
+$green: #29a979;
+
+// field
+$field-border-radius: 4px;
+$field-border-color: $light-grey;
+$field-hover-border-color: $light-grey;
+$field-active-border-color: $dark-grey;

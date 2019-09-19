@@ -40,7 +40,9 @@ class TextArea extends Component {
             return (
                 <div style={style} className="field-wrapper editable-field-wrapper">
                     <p className="field-label">{this.props.label}</p>
-                    {markdown ? <ReactMarkdown>{this.props.value}</ReactMarkdown> : <p>{this.props.value}</p>}
+                    <span className="text-area-present">
+                        {markdown ? <ReactMarkdown>{this.props.value}</ReactMarkdown> : <p>{this.props.value}</p>}
+                    </span>
                 </div>
             );
         }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Loading from './Loading';
 import classnames from 'classnames';
 import _ from 'lodash';
 
@@ -30,10 +29,6 @@ class Button extends Component {
     }
 
     getContent() {
-        if (this.props.loading) {
-            return <Loading />;
-        }
-
         return (
             <>
                 {this.getIconMarkup()} {this.props.children}

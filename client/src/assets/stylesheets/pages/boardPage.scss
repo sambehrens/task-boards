@@ -1,11 +1,9 @@
 .board-page {
   height: 100%;
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
 
   .board-name {
-    color: #fff;
     margin: 1em 1em 0 0;
   }
 
@@ -14,19 +12,22 @@
   }
 
   .columns-wrapper {
+    padding-bottom: 3em;
+    height: 100%;
     flex: 1;
-    padding-bottom: 2em;
 
     .columns {
       margin: auto;
-      min-height: 40em;
+      min-height: 100%;
       max-width: 800px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      background-color: $gray-7;
+      background-color: #fff;
+      box-shadow: 0 2px 3px $soft-grey;
+      border: 1px solid $soft-grey;
       border-radius: $border-radius-default;
-      padding: 0 $columns-padding $columns-padding;
+      padding: 0.25em $columns-padding $columns-padding;
     }
   }
 }

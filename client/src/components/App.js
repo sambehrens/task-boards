@@ -7,7 +7,6 @@ import store from '../redux/store';
 import '../assets/stylesheets/App.scss';
 
 import Landing from './pages/Landing';
-import Footer from './layout/Footer';
 import BoardPage from './pages/BoardPage';
 
 class App extends Component {
@@ -20,7 +19,7 @@ class App extends Component {
                             <Route exact path="/" component={Landing} />
                             <Route exact path="/:id" component={BoardPage} />
                         </Switch>
-                        <Footer />
+                        {/* <Footer /> */}
                     </div>
                 </Router>
             </Provider>

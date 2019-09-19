@@ -27,7 +27,7 @@ export default createReducer(initialState, {
 
     EDIT_TASK_SUCCESS(state, action) {
         return update(state, {
-            test: { $set: action.payload }
+            [action.payload._id]: { $set: action.payload }
         });
     },
 

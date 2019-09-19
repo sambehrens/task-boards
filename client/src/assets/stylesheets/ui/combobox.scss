@@ -9,7 +9,7 @@
 
   .combobox-content {
     position: absolute;
-    border: 1px solid $gray-2;
+    border: 1px solid $light-grey;
     border-radius: $border-radius-default;
     background-color: #fff;
     width: 100%;
@@ -34,24 +34,24 @@
       //   border: 1px solid transparent;
       background-color: transparent;
       cursor: pointer;
-      background-color: $gray-1;
+      background-color: $soft-grey;
       font-size: 1em;
       font-weight: 500;
 
       &:hover {
-        background-color: $blue-2;
+        background-color: $hover-blue;
         color: #fff;
       }
 
       &:active {
-        background-color: $blue-2;
+        background-color: $blue;
         color: #fff;
       }
 
       &:focus {
         outline: none;
         color: #fff;
-        background-color: $blue-2;
+        background-color: $light-grey;
       }
     }
   }

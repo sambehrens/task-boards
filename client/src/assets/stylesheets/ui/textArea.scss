@@ -1,7 +1,11 @@
+.text-area-present p {
+  font-size: 1em;
+}
+
 .text-area {
   flex: 1;
-  border: 1px solid $gray-2;
-  border-radius: $border-radius-default;
+  border: 1px solid $field-border-color;
+  border-radius: $field-border-radius;
   box-shadow: none;
   -webkit-appearance: none;
   background-color: transparent;
@@ -12,16 +16,15 @@
   padding: 10px;
 
   &::placeholder {
-    color: $gray-4;
+    color: $light-grey;
   }
 
   &:hover {
-    border-color: $gray-3;
+    border-color: $field-hover-border-color;
   }
 
   &:focus {
     outline: 0;
-    border-color: $blue-2;
-    background-color: $gray-0;
+    border-color: $field-active-border-color;
   }
 }

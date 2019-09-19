@@ -3,18 +3,11 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import classnames from 'classnames';
 
-import Loading from './Loading';
-
 const propTypes = {
     data: PropTypes.array.isRequired,
-    loading: PropTypes.bool,
     onRowClick: PropTypes.func,
     name: PropTypes.string,
     noDataMessage: PropTypes.string
-};
-
-const defaultProps = {
-    loading: false
 };
 
 class List extends Component {
@@ -25,9 +18,6 @@ class List extends Component {
     }
 
     getBodyMarkup = () => {
-        if (this.props.loading) {
-            return <Loading />;
-        }
         return _.isEmpty(this.props.data) ? (
             <p className="no-data-message">{this.props.noDataMessage}</p>
         ) : (

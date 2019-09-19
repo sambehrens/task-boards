@@ -14,43 +14,31 @@
   }
 
   &.primary {
-    color: $blue-2;
+    color: $link-blue;
 
     &:hover {
-      color: $blue-3;
+      color: $hover-blue;
     }
 
     &:active {
-      color: $blue-4;
+      color: $blue;
     }
   }
 
   &.secondary {
-    color: $gray-7;
+    color: $light-grey;
 
     &:hover {
-      color: $gray-5;
+      color: $dark-grey;
     }
 
     &:active {
-      color: $gray-8;
-    }
-  }
-
-  &.tertiary {
-    color: $gray-3;
-
-    &:hover {
-      color: $gray-4;
-    }
-
-    &:active {
-      color: $gray-5;
+      color: $light-grey;
     }
   }
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 0 3pt $blue-1;
+    box-shadow: 0 0 0 3pt $fill-blue;
   }
 }

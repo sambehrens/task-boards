@@ -1,9 +1,8 @@
 import { createReducer } from '../utils/ReducerHelper';
 import update from 'immutability-helper';
+import _ from 'lodash';
 
-const initialState = {
-    errors: {}
-};
+const initialState = {};
 
 export default createReducer(initialState, {
     CREATE_BOARD_SUCCESS(state, action) {
@@ -14,7 +13,7 @@ export default createReducer(initialState, {
 
     FILTER_BOARDS_SUCCESS(state, action) {
         return update(state, {
-            test: { $set: action.payload }
+            $set: _.keyBy(action.payload, '_id')
         });
     },
 
