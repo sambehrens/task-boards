@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MessageModal from './modal/MessageModal';
+import Button from './Button';
 
 const propTypes = {
     onConfirm: PropTypes.func.isRequired,
@@ -42,11 +43,12 @@ export class ConfirmButton extends Component {
     }
 
     render() {
+        const {message, onConfirm, children, ...buttonProps} = this.props;
         return (
-            <button onClick={this.handleClick} className={this.props.className}>
+            <Button onClick={this.handleClick} {...buttonProps} >
                 {this.props.children}
                 {this.getConfirmModal()}
-            </button>
+            </Button>
         );
     }
 }

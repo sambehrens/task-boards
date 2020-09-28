@@ -55,19 +55,17 @@ class MessageModal extends Component {
                     <Button
                         id="cancel"
                         onClick={this.props.onCancel}
-                        content={this.props.cancelButtonText}
                         kind="secondary"
                         width="8em"
                         data-autofocus={!this.props.focusSubmit}
-                    />
+                    >{this.props.cancelButtonText}</Button>
                     <Button
                         id="submit"
                         onClick={this.props.onSubmit}
-                        content={this.props.submitButtonText}
                         kind="primary"
                         width="8em"
                         data-autofocus={this.props.focusSubmit}
-                    />
+                    >{this.props.submitButtonText}</Button>
                 </div>
             </Modal>
         );
