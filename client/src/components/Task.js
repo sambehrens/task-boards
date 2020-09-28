@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import _ from 'lodash';
 import classnames from 'classnames';
+import ReactMarkdown from 'react-markdown';
 
 export class Task extends Component {
     render() {
@@ -19,6 +20,7 @@ export class Task extends Component {
                         onClick={this.props.onClick}
                         id={this.props.task._id}>
                         <h3>{this.props.task.name}</h3>
+                        <ReactMarkdown>{this.props.task.description}</ReactMarkdown>
                         <p>{this.props.task.estimate}</p>
                     </div>
                 )}

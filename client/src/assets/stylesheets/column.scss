@@ -5,15 +5,26 @@
   // border-radius: $border-radius-default;
   display: flex;
   flex-direction: column;
+  background-color: white;
 
-  &:first-child .drop-area {
+  &:first-child {
     border-bottom-left-radius: $border-radius-default;
     border-top-left-radius: $border-radius-default;
+
+    .drop-area {
+      border-bottom-left-radius: $border-radius-default;
+      border-top-left-radius: $border-radius-default;
+    }
   }
 
-  &:last-child .drop-area {
+  &:last-child {
     border-bottom-right-radius: $border-radius-default;
     border-top-right-radius: $border-radius-default;
+
+    .drop-area {
+      border-bottom-right-radius: $border-radius-default;
+      border-top-right-radius: $border-radius-default;
+    }
   }
 
   .column-title {
