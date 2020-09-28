@@ -50,7 +50,8 @@ export class BoardPage extends Component {
         const boardId = this.props.match.params.id;
         const boardIds = window.localStorage.getItem('boards') || [];
         if (!_.includes(boardIds, boardId)) {
-            window.localStorage.setItem('boards', boardIds.concat([boardId]));
+            boardIds.push(boardId);
+            window.localStorage.setItem('boards', boardIds);
         }
     };
 

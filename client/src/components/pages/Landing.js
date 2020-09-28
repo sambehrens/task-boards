@@ -33,7 +33,7 @@ export class Landing extends Component {
     };
                                        
     onNewBoardSuccess = (board) => {
-        const boards = window.localStorage.getItem('boards');
+        const boards = window.localStorage.getItem('boards') || [];
         boards.push(board._id);
         window.localStorage.setItem('boards', boards);
     };
