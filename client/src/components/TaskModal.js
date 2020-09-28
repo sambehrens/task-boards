@@ -4,6 +4,7 @@ import Modal from './ui/modal/Modal';
 import Field from './ui/Field';
 import TextArea from './ui/TextArea';
 import _ from 'lodash';
+import ConfirmButton from './ui/ConfirmButton';
 
 export class TaskModal extends Component {
     onChange = evt => {
@@ -47,9 +48,9 @@ export class TaskModal extends Component {
                                 <Button onClick={this.props.onEditClick} className="form-button form-button-right">
                                     Edit
                                 </Button>
-                                <Button onClick={() => this.props.onDeleteClick(this.props.task._id)} className="form-button" kind="secondary">
+                                <ConfirmButton onConfirm={() => this.props.onDeleteClick(this.props.task._id)} className="form-button" kind="secondary" message={"Are you sure you want to delete this task?"}>
                                     Delete
-                                </Button>
+                                </ConfirmButton>
                             </Fragment>
                         ) : (
                             <Fragment>

@@ -1,7 +1,7 @@
 @import 'presets.scss';
 
 .task {
-  padding: 10px;
+  padding: 1rem;
   border-radius: $border-radius-default;
   margin: 0 0 10px 0;
   background-color: #fff;
@@ -11,5 +11,13 @@
 
   &.isDragging {
     border-color: $light-grey;
+  }
+
+  & > * {
+    margin-bottom: 0.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
