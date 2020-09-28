@@ -19,7 +19,7 @@ export class Landing extends Component {
     };
 
     onNewBoardClick = () => {
-        this.props.boardActions.create({name: 'New Board}, this.onNewBoardSuccess);
+        this.props.boardActions.create({name: 'New Board'}, this.onNewBoardSuccess);
     };
                                        
     onNewBoardSuccess = (board) => {
