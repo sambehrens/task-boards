@@ -1,5 +1,5 @@
 .board-page {
-  height: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -9,12 +9,10 @@
   }
 
   .controls-row {
-    padding: 1.5em;
+    padding: 1.5em 0;
   }
 
   .columns-wrapper {
-    padding-bottom: 3em;
-    height: 100%;
     flex: 1;
 
     .columns {
@@ -26,7 +24,6 @@
       box-shadow: 0 2px 3px $soft-grey;
       border: 1px solid $soft-grey;
       border-radius: $border-radius-default;
-      padding: 0.25em $columns-padding $columns-padding;
     }
   }
 }

@@ -94,6 +94,8 @@ export class BoardPage extends Component {
 
     onDeleteClick = (id) => {
         this.props.taskActions.delete(id);
+        this.setState({ showViewTaskModal: false });
+        Utils.clearUrlParameters(this.props.history);
     };
 
     taskChangedPosition(source, destination) {

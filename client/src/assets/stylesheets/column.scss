@@ -1,11 +1,11 @@
 @import 'presets.scss';
 
 .column {
-  flex: 0 1 calc(33.33% - 0.13em);
-  // border-radius: $border-radius-default;
+  flex: 0 1 calc(33.33% - 1px);
   display: flex;
   flex-direction: column;
   background-color: white;
+  border-right: 1px solid $soft-grey;
 
   &:first-child {
     border-bottom-left-radius: $border-radius-default;
@@ -13,17 +13,16 @@
 
     .drop-area {
       border-bottom-left-radius: $border-radius-default;
-      border-top-left-radius: $border-radius-default;
     }
   }
 
   &:last-child {
     border-bottom-right-radius: $border-radius-default;
     border-top-right-radius: $border-radius-default;
+    border-right: none;
 
     .drop-area {
       border-bottom-right-radius: $border-radius-default;
-      border-top-right-radius: $border-radius-default;
     }
   }
 
