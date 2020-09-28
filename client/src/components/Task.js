@@ -19,9 +19,7 @@ export class Task extends Component {
                         ref={provided.innerRef}
                         onClick={this.props.onClick}
                         id={this.props.task._id}>
-                        <h3>{this.props.task.name}</h3>
                         <ReactMarkdown>{this.props.task.description}</ReactMarkdown>
-                        <p>{this.props.task.estimate}</p>
                     </div>
                 )}
             </Draggable>

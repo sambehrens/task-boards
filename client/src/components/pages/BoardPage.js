@@ -20,7 +20,7 @@ export class BoardPage extends Component {
         showViewTaskModal: false,
         showErrorPageMessage: false,
         errorMessage: '',
-        newTask: { name: '', description: '', estimate: '' }
+        newTask: { description: '' }
     };
 
     componentDidMount() {
@@ -66,7 +66,7 @@ export class BoardPage extends Component {
 
     onAddTaskSubmit = evt => {
         evt.preventDefault();
-        this.setState({ showNewTaskModal: false, newTask: { name: '', description: '', estimate: '' } });
+        this.setState({ showNewTaskModal: false, newTask: { description: '' } });
         this.props.taskActions.create(
             _.assign({}, this.state.newTask, {
                 columnId: _.get(_.find(this.props.columns, 'startColumn'), '_id'),
