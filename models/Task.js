@@ -8,18 +8,12 @@ const taskSchema = new Schema(
             type: ObjectId,
             required: [true, 'Board id is required']
         },
-        name: {
-            type: String,
-            required: [true, 'Task name is required']
-        },
         number: {
             type: Number
         },
         description: {
-            type: String
-        },
-        estimate: {
-            type: Number
+            type: String,
+            required: [true, 'Task description is required']
         },
         assignee: {
             type: ObjectId
