@@ -92,6 +92,10 @@ export class BoardPage extends Component {
         this.props.taskActions.edit(id, editedTask);
     };
 
+    onDeleteClick = (id) => {
+        this.props.taskActions.delete(id);
+    };
+
     taskChangedPosition(source, destination) {
         return source.droppableId !== destination.droppableId || source.index !== destination.index;
     }
@@ -173,15 +177,16 @@ export class BoardPage extends Component {
                         onCancel={() => this.setState({ showNewTaskModal: false })}
                         onChange={this.onAddTaskChange}
                         task={this.state.newTask}
-                        title="Create a new task"></TaskModal>
+                        title="Create a new task" />
                 ) : null}
                 {this.state.showViewTaskModal ? (
                     <ViewTaskModal
                         onCancel={this.onCloseTask}
                         onEditSubmit={this.onEditTaskSubmit}
+                        onDeleteClick={this.onDeleteClick}
                         task={
                             this.props.tasks[Utils.getUrlParameter('task', this.props.location.search)]
-                        }></ViewTaskModal>
+                        } />
                 ) : null}
                 {this.state.showErrorPageMessage ? <PageMessage>{this.state.errorMessage}</PageMessage> : null}
             </div>

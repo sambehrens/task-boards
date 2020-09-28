@@ -57,6 +57,7 @@ export class ViewTaskModal extends Component {
                 onSubmit={this.onEditSubmit}
                 onCancelEdit={this.onCancelEdit}
                 onEditClick={this.onEditClick}
+                onDeleteClick={this.props.onDeleteClick}
                 task={this.props.task}
                 editedFields={this.state.editedFields}
                 present={this.state.present}

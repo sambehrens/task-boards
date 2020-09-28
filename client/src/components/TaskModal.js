@@ -32,10 +32,10 @@ export class TaskModal extends Component {
                             label="Description"
                             placeholder="Description"
                             present={this.props.present}
-                            markdown></TextArea>
+                            markdown />
                         <Field
                             id="estimate"
-                            value={_.get(this.props.editedFields, 'estimate') || this.props.task.estimate || ''}
+                            value={_.get(this.props.editedFields, 'estimate') || (_.isNil(this.props.task.estimate) ? '' : this.props.task.estimate)}
                             label="Estimate"
                             onChange={this.onChange}
                             placeholder="Estimate"
@@ -43,9 +43,14 @@ export class TaskModal extends Component {
                             present={this.props.present}
                         />
                         {this.props.present ? (
-                            <Button onClick={this.props.onEditClick} className="form-button form-button-right">
-                                Edit
-                            </Button>
+                            <Fragment>
+                                <Button onClick={this.props.onEditClick} className="form-button form-button-right">
+                                    Edit
+                                </Button>
+                                <Button onClick={() => this.props.onDeleteClick(this.props.task._id)} className="form-button" kind="secondary">
+                                    Delete
+                                </Button>
+                            </Fragment>
                         ) : (
                             <Fragment>
                                 <Button type="submit" className="form-button form-button-right">
