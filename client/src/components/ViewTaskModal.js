@@ -61,7 +61,7 @@ export class ViewTaskModal extends Component {
                 task={this.props.task}
                 editedFields={this.state.editedFields}
                 present={this.state.present}
-                title={_.get(this.props.task, 'name')}
+                title="Edit task"
             />
         );
     }

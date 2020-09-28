@@ -22,7 +22,7 @@ export class TaskModal extends Component {
                             value={_.get(this.props.editedFields, 'description') || this.props.task.description || ''}
                             onChange={this.onChange}
                             label="Description"
-                            placeholder="Description"
+                            placeholder="# Task description (markdown)"
                             present={this.props.present}
                             markdown />
                         {this.props.present ? (
