@@ -5,8 +5,17 @@ import { bindActionCreators } from 'redux';
 import _ from 'lodash';
 import BoardActions from '../../redux/actions/BoardActions';
 import { withRouter } from 'react-router-dom';
+import Field from '../ui/Field';
 
 export class Landing extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            boardName: '',
+        };
+    }
+
     componentDidMount() {
         const boardIds = window.localStorage.getItem('boards');
         if (boardIds) {
@@ -18,8 +27,9 @@ export class Landing extends Component {
         this.props.history.push(evt.target.id);
     };
 
-    onNewBoardClick = () => {
-        this.props.boardActions.create({name: 'New Board'}, this.onNewBoardSuccess);
+    onNewBoardClick = (e) => {
+        e.preventDefault();
+        this.props.boardActions.create({name: this.state.boardName}, this.onNewBoardSuccess);
     };
                                        
     onNewBoardSuccess = (board) => {
@@ -42,7 +52,10 @@ export class Landing extends Component {
         return (
             <div className="landing-page">
                 <h1>Welcome to whatever this is called</h1>
-                <Button onClick={this.onNewBoardClick}>Create a new board</Button>
+                <form onSubmit={this.onNewBoardClick}>
+                    <Field id='boardName' value={this.state.boardName} onChange={(e) => this.setState({boardName: e.target.value})} />
+                    <Button type='submit'>Create a new board</Button>
+                </form>
                 {this.getBoards()}
             </div>
         );
