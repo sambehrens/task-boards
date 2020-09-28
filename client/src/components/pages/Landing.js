@@ -18,6 +18,16 @@ export class Landing extends Component {
         this.props.history.push(evt.target.id);
     };
 
+    onNewBoardClick = () => {
+        this.props.boardActions.create({name: 'New Board}, this.onNewBoardSuccess);
+    };
+                                       
+    onNewBoardSuccess = (board) => {
+        const boards = window.localStorage.getItem('boards');
+        boards.push(board._id);
+        window.localStorage.setItem('boards', boards);
+    };
+
     getBoards() {
         if (this.props.boards) {
             return _.map(this.props.boards, board => (
@@ -32,7 +42,7 @@ export class Landing extends Component {
         return (
             <div className="landing-page">
                 <h1>Welcome to whatever this is called</h1>
-                <Button>Create a new board</Button>
+                <Button onClick={this.onNewBoardClick}>Create a new board</Button>
                 {this.getBoards()}
             </div>
         );
