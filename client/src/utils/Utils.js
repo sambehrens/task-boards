@@ -29,7 +29,7 @@ const Utils = {
         key = key.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
         let results = new RegExp('[\\?&]' + key + '=([^&#]*)').exec(search);
         return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    }
+    },
 };
 
 export default Utils;

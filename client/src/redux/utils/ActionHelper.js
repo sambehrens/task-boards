@@ -23,7 +23,7 @@ export const ActionHelper = {
      * @param data      {Object}    data for the new doc
      * @param onSuccess {Function}  callback for when creating is successful
      */
-    create: async (dispatch, type, data, history, onSuccess = _.noop, onFail = _.noop) => {
+    create: async (dispatch, type, data, onSuccess = _.noop, onFail = _.noop) => {
         try {
             const res = await axios.post(`/api/${type.url}/`, data);
 
@@ -32,9 +32,6 @@ export const ActionHelper = {
                 payload: res.data
             });
             onSuccess(res);
-            if (history) {
-                history.push(`/${type.clientUrl || type.url}/${res.data._id}`);
-            }
         } catch (err) {
             getErrors(dispatch, type, err);
             onFail(err);
@@ -130,8 +127,8 @@ export const ActionHelper = {
 
 export const getDefaultActions = type => {
     return {
-        create: (data, history, onSuccess, onFail) => dispatch => {
-            return ActionHelper.create(dispatch, type, data, history, onSuccess, onFail);
+        create: (data, onSuccess, onFail) => dispatch => {
+            return ActionHelper.create(dispatch, type, data, onSuccess, onFail);
         },
 
         filter: (data, onSuccess, onFail) => dispatch => {

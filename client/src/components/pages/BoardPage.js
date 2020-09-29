@@ -48,11 +48,9 @@ export class BoardPage extends Component {
 
     onGetBoardSuccess = () => {
         const boardId = this.props.match.params.id;
-        let boardIds = window.localStorage.getItem('boards') || [];
+        const boardIdsString = window.localStorage.getItem('boards') || '';
+        const boardIds = _.filter(boardIdsString.split(','));
         if (!_.includes(boardIds, boardId)) {
-            if (!_.isArray(boardIds)) {
-                boardIds = Array(boardIds);
-            }
             boardIds.push(boardId);
             window.localStorage.setItem('boards', boardIds);
         }

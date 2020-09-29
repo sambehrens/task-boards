@@ -17,7 +17,8 @@ export class Landing extends Component {
     }
 
     componentDidMount() {
-        const boardIds = window.localStorage.getItem('boards');
+        const boardIdsString = window.localStorage.getItem('boards') || '';
+        const boardIds = _.filter(boardIdsString.split(','));
         if (boardIds) {
             this.props.boardActions.filter({ _id: boardIds });
         }
@@ -33,9 +34,10 @@ export class Landing extends Component {
     };
                                        
     onNewBoardSuccess = (board) => {
-        const boards = window.localStorage.getItem('boards') || [];
-        boards.push(board._id);
-        window.localStorage.setItem('boards', boards);
+        const boardIdsString = window.localStorage.getItem('boards') || '';
+        const boardIds = _.filter(boardIdsString.split(','));
+        boardIds.push(board._id);
+        window.localStorage.setItem('boards', boardIds);
     };
 
     getBoards() {
