@@ -85,7 +85,7 @@ class Field extends Component {
                 className={classnames('field-wrapper', this.props.className, {
                     'inline-field': this.props.sidebyside
                 })}>
-                <p className="field-label">{this.props.label}</p>
+                {this.props.label ? <p className="field-label">{this.props.label}</p> : null}
                 <div className="field-outer">
                     {this.getLeftIconMarkup()}
                     <input

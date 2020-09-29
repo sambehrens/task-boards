@@ -66,14 +66,13 @@ export class BoardPage extends Component {
         }));
     };
 
-    onAddTaskSubmit = evt => {
-        evt.preventDefault();
-        this.setState({ showNewTaskModal: false, newTask: { description: '' } });
+    onAddTaskSubmit = () => {
         this.props.taskActions.create(
             _.assign({}, this.state.newTask, {
                 columnId: _.get(_.find(this.props.columns, 'startColumn'), '_id'),
                 boardId: this.props.match.params.id
-            })
+            }),
+            () => this.setState({ showNewTaskModal: false, newTask: { description: '' } })
         );
     };
 
@@ -85,19 +84,19 @@ export class BoardPage extends Component {
         }
     };
 
-    onCloseTask = () => {
+    closeTask = () => {
         this.setState({ showViewTaskModal: false });
         Utils.clearUrlParameters(this.props.history);
     };
 
     onEditTaskSubmit = (id, editedTask) => {
         this.props.taskActions.edit(id, editedTask);
+        this.closeTask();
     };
 
     onDeleteClick = (id) => {
         this.props.taskActions.delete(id);
-        this.setState({ showViewTaskModal: false });
-        Utils.clearUrlParameters(this.props.history);
+        this.closeTask();
     };
 
     taskChangedPosition(source, destination) {
@@ -185,7 +184,7 @@ export class BoardPage extends Component {
                 ) : null}
                 {this.state.showViewTaskModal ? (
                     <ViewTaskModal
-                        onCancel={this.onCloseTask}
+                        onCancel={this.closeTask}
                         onEditSubmit={this.onEditTaskSubmit}
                         onDeleteClick={this.onDeleteClick}
                         task={

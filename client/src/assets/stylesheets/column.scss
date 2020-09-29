@@ -20,6 +20,7 @@
     border-bottom-right-radius: $border-radius-default;
     border-top-right-radius: $border-radius-default;
     border-right: none;
+    flex: 0 1 calc(33.33%);
 
     .drop-area {
       border-bottom-right-radius: $border-radius-default;

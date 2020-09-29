@@ -39,7 +39,7 @@ class TextArea extends Component {
         if (present) {
             return (
                 <div style={style} className="field-wrapper editable-field-wrapper">
-                    <p className="field-label">{this.props.label}</p>
+                    {this.props.label ? <p className="field-label">{this.props.label}</p> : null}
                     <span className="text-area-present">
                         {markdown ? <ReactMarkdown>{this.props.value}</ReactMarkdown> : <p>{this.props.value}</p>}
                     </span>
@@ -53,7 +53,7 @@ class TextArea extends Component {
                 className={classnames('field-wrapper', this.props.className, {
                     'inline-field': this.props.sidebyside
                 })}>
-                <p className="field-label">{this.props.label}</p>
+                {this.props.label ? <p className="field-label">{this.props.label}</p> : null}
                 <div className="field-outer">
                     <textarea
                         {...inputProps}

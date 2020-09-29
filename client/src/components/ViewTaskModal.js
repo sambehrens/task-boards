@@ -8,9 +8,15 @@ export class ViewTaskModal extends Component {
         super(props);
 
         this.state = {
-            present: true,
-            editedFields: {}
+            present: false,
+            editedFields: props.task,
         };
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.task !== prevProps.task) {
+            this.setState({editedFields: this.props.task});
+        }
     }
 
     onEditClick = evt => {
@@ -18,9 +24,7 @@ export class ViewTaskModal extends Component {
         this.setState({ present: false });
     };
 
-    onEditSubmit = evt => {
-        evt.preventDefault();
-        this.setState({ present: true, editedFields: {} });
+    onEditSubmit = () => {
         if (
             _.isEmpty(this.state.editedFields) ||
             _.isEqual(_.assign({}, this.props.task, this.state.editedFields), this.props.task)
@@ -61,6 +65,7 @@ export class ViewTaskModal extends Component {
                 task={this.props.task}
                 editedFields={this.state.editedFields}
                 present={this.state.present}
+                edit={true}
             />
         );
     }
