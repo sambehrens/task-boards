@@ -7,6 +7,7 @@
   background-color: #fff;
   box-shadow: 0 2px 3px $soft-grey;
   border: 1px solid $soft-grey;
+  //font-size: 0.9em;
   // transition: 0.2s all;
 
   &.isDragging {
@@ -14,10 +15,21 @@
   }
 
   & > * {
-    margin-bottom: 0.5rem;
+    margin: inherit;
 
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  code {
+    color: $dark-grey;
+  }
+
+  pre {
+    background-color: $highlight-yellow;
+    border: 1px solid $yellow;
+    border-radius: 3px;
+    padding: 0.25rem;
   }
 }
