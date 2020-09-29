@@ -59,7 +59,7 @@ router.delete('/:id', (req, res) => {
                 return res.status(404).json({ _id: `Could not find column that task is in` });
             }
 
-            column.taskIds = column.taskIds.filter(id => id === task._id);
+            column.taskIds = column.taskIds.filter(id => !task._id.equals(id));
             column
                 .save()
                 .then(column => {
