@@ -10,6 +10,14 @@
     border-radius: $border-radius-default;
     padding: 3rem;
     box-shadow: 0 2px 3px $soft-grey;
+
+    .field-wrapper {
+      margin-top: 1.5rem;
+    }
+
+    .form-button {
+      margin-bottom: 1.5rem;
+    }
   }
 
   .board-link {

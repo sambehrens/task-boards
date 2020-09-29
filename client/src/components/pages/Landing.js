@@ -56,7 +56,7 @@ export class Landing extends Component {
                     <form onSubmit={this.onNewBoardClick}>
                         <Field id='boardName' value={this.state.boardName}
                                onChange={(e) => this.setState({ boardName: e.target.value })} placeholder="New board name"/>
-                        <Button type='submit' className="form-button">Create</Button>
+                        <Button type='submit' className="form-button form-button-right">Create</Button>
                     </form>
                     <div className='clear'/>
                     <h2>Existing boards:</h2>
