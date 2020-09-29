@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import _ from 'lodash';
 import BoardActions from '../../redux/actions/BoardActions';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Field from '../ui/Field';
 
 export class Landing extends Component {
@@ -12,7 +12,7 @@ export class Landing extends Component {
         super(props);
 
         this.state = {
-            boardName: '',
+            boardName: ''
         };
     }
 
@@ -24,15 +24,11 @@ export class Landing extends Component {
         }
     }
 
-    onBoardClick = evt => {
-        this.props.history.push(evt.target.id);
-    };
-
     onNewBoardClick = (e) => {
         e.preventDefault();
-        this.props.boardActions.create({name: this.state.boardName}, this.onNewBoardSuccess);
+        this.props.boardActions.create({ name: this.state.boardName }, this.onNewBoardSuccess);
     };
-                                       
+
     onNewBoardSuccess = (board) => {
         const boardIdsString = window.localStorage.getItem('boards') || '';
         const boardIds = _.filter(boardIdsString.split(','));
@@ -43,9 +39,9 @@ export class Landing extends Component {
     getBoards() {
         if (this.props.boards) {
             return _.map(this.props.boards, board => (
-                <div key={board._id} id={board._id} onClick={this.onBoardClick}>
+                <Link key={board._id} to={board._id} className={'button secondary medium board-link'}>
                     {board.name}
-                </div>
+                </Link>
             ));
         }
     }
@@ -53,12 +49,20 @@ export class Landing extends Component {
     render() {
         return (
             <div className="landing-page">
-                <h1>Welcome to whatever this is called</h1>
-                <form onSubmit={this.onNewBoardClick}>
-                    <Field id='boardName' value={this.state.boardName} onChange={(e) => this.setState({boardName: e.target.value})} />
-                    <Button type='submit'>Create a new board</Button>
-                </form>
-                {this.getBoards()}
+                <div className="landing-controls">
+                    <h1>Welcome to task boards</h1>
+                    <p className='right'>By Sam Behrens</p>
+                    <div className='clear'/>
+                    <form onSubmit={this.onNewBoardClick}>
+                        <Field id='boardName' value={this.state.boardName}
+                               onChange={(e) => this.setState({ boardName: e.target.value })} placeholder="New board name"/>
+                        <Button type='submit' className="form-button">Create</Button>
+                    </form>
+                    <div className='clear'/>
+                    <h2>Existing boards:</h2>
+                    <hr/>
+                    {this.getBoards()}
+                </div>
             </div>
         );
     }
