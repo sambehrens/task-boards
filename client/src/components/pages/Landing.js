@@ -32,7 +32,7 @@ export class Landing extends Component {
     onNewBoardSuccess = (board) => {
         const boardIdsString = window.localStorage.getItem('boards') || '';
         const boardIds = _.filter(boardIdsString.split(','));
-        boardIds.push(board._id);
+        boardIds.unshift(board._id);
         window.localStorage.setItem('boards', boardIds);
     };
 

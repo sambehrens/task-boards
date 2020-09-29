@@ -51,7 +51,7 @@ export class BoardPage extends Component {
         const boardIdsString = window.localStorage.getItem('boards') || '';
         const boardIds = _.filter(boardIdsString.split(','));
         if (!_.includes(boardIds, boardId)) {
-            boardIds.push(boardId);
+            boardIds.unshift(boardId);
             window.localStorage.setItem('boards', boardIds);
         }
     };
