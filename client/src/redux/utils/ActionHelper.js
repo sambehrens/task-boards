@@ -8,6 +8,7 @@ import _ from 'lodash';
  * @param errors    {Object}    errors data to send in action payload
  */
 export const getErrors = (dispatch, type, errors) => {
+    console.log(errors);
     dispatch({
         type: type.ERROR,
         payload: errors.response.data

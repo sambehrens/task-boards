@@ -15,13 +15,12 @@ export class TaskModal extends Component {
         return (
             <Modal onCancel={this.props.onCancel}>
                 <div className="new-task-modal">
-                    <h2>{this.props.title}</h2>
+                    {this.props.title ? <h2>{this.props.title}</h2> : null}
                     <form onSubmit={this.props.onSubmit}>
                         <TextArea
                             id="description"
                             value={_.get(this.props.editedFields, 'description') || this.props.task.description || ''}
                             onChange={this.onChange}
-                            label="Description"
                             placeholder="# Task description (markdown)"
                             present={this.props.present}
                             markdown />
