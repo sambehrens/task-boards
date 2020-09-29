@@ -25,10 +25,9 @@
   }
 
   pre {
-    background-color: $highlight-yellow;
-    border: 1px solid $yellow;
-    border-radius: 3px;
-    padding: 0.25rem;
-    font-size: 0.9em;
+    background-color: #f4f4f4;
+    border-radius: $border-radius-default;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8em;
   }
 }

@@ -9,13 +9,13 @@ export class ViewTaskModal extends Component {
 
         this.state = {
             present: false,
-            editedFields: props.task,
+            editedFields: props.task
         };
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.task !== prevProps.task) {
-            this.setState({editedFields: this.props.task});
+            this.setState({ editedFields: this.props.task });
         }
     }
 
@@ -25,11 +25,8 @@ export class ViewTaskModal extends Component {
     };
 
     onEditSubmit = () => {
-        if (
-            _.isEmpty(this.state.editedFields) ||
-            _.isEqual(_.assign({}, this.props.task, this.state.editedFields), this.props.task)
-        ) {
-            return;
+        if (_.isEqual(this.state.editedFields, this.props.task)) {
+            this.props.onCancel();
         }
         this.props.onEditSubmit(this.props.task._id, this.state.editedFields);
     };
